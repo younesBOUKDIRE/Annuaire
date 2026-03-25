@@ -59,19 +59,19 @@ $entreprises = $stmt->fetchAll();
 <!-- Google Maps -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKk9_vsrjRE0HQg0TJUBfqQcWPEUq1XJw"></script>
 <script>
-const data = <?= json_encode($entreprises) ?>;
-const map = new google.maps.Map(document.getElementById("map"), {
-    center: {lat: 33.5, lng: -7.6},
-    zoom: 6
-});
+    const data = <?= json_encode($entreprises) ?>;
+    const map = new google.maps.Map(document.getElementById("map"), {
+        center: {lat: 33.5, lng: -7.6},
+        zoom: 6
+    });
 
-data.forEach(e => {
-    if(e.latitude && e.longitude){
-        new google.maps.Marker({
-            position: {lat: parseFloat(e.latitude), lng: parseFloat(e.longitude)},
-            map,
-            title: e.nom
-        });
-    }
-});
+    data.forEach(e => {
+        if(e.latitude && e.longitude){
+            new google.maps.Marker({
+                position: {lat: parseFloat(e.latitude), lng: parseFloat(e.longitude)},
+                map,
+                title: e.nom
+            });
+        }
+    });
 </script>

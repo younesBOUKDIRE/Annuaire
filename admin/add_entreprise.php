@@ -57,24 +57,24 @@ include '../includes/header.php';
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKk9_vsrjRE0HQg0TJUBfqQcWPEUq1XJw"></script>
 <script>
-let marker;
-const map = new google.maps.Map(document.getElementById("map"), {
-  center: { lat: 33.5, lng: -7.6 },
-  zoom: 6
-});
-
-map.addListener("click", e => {
-  const latInput = document.getElementById("lat");
-  const lngInput = document.getElementById("lng");
-
-  latInput.value = e.latLng.lat();
-  lngInput.value = e.latLng.lng();
-
-  if(marker) marker.setMap(null);
-
-  marker = new google.maps.Marker({
-    position: e.latLng,
-    map: map
+  let marker;
+  const map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: 33.5, lng: -7.6 },
+    zoom: 6
   });
-});
+
+  map.addListener("click", e => {
+    const latInput = document.getElementById("lat");
+    const lngInput = document.getElementById("lng");
+
+    latInput.value = e.latLng.lat();
+    lngInput.value = e.latLng.lng();
+
+    if(marker) marker.setMap(null);
+
+    marker = new google.maps.Marker({
+      position: e.latLng,
+      map: map
+    });
+  });
 </script>
