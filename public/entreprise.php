@@ -87,8 +87,11 @@ src="https://maps.google.com/maps?q=<?= $e['latitude'] ?>,<?= $e['longitude'] ?>
   <input type="hidden" name="entreprise_id" value="<?= $id ?>">
 
   <select name="note" class="form-select mb-2">
-    <option>5</option><option>4</option><option>3</option>
-    <option>2</option><option>1</option>
+    <option>5</option>
+    <option>4</option>
+    <option>3</option>
+    <option>2</option>
+    <option>1</option>
   </select>
 
   <textarea name="commentaire" class="form-control mb-2"

@@ -56,7 +56,6 @@ $entreprises = $stmt->fetchAll();
     </div>
 </div>
 
-<!-- Google Maps -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKk9_vsrjRE0HQg0TJUBfqQcWPEUq1XJw"></script>
 <script>
     const data = <?= json_encode($entreprises) ?>;
@@ -67,11 +66,24 @@ $entreprises = $stmt->fetchAll();
 
     data.forEach(e => {
         if(e.latitude && e.longitude){
-            new google.maps.Marker({
-                position: {lat: parseFloat(e.latitude), lng: parseFloat(e.longitude)},
-                map,
-                title: e.nom
+             const position = {
+                lat: parseFloat(e.latitude),
+                lng: parseFloat(e.longitude)
+            };
+
+            const marker = new google.maps.Marker({
+                position: position,
+                map: map
             });
+
+            const infoWindow = new google.maps.InfoWindow({
+                content: `<div style="font-weight:bold;">${e.nom}</div>`
+            });
+
+            marker.addListener("click", () => {
+                infoWindow.open(map, marker);
+            });
+            
         }
     });
 </script>
